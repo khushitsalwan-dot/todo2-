@@ -1,0 +1,13 @@
+$("#addBtn").click(() => {
+  $.post('/api/todos', { text: $("#todoInput").val() }, () => {
+    $("#todoInput").val('');
+    loadTodos();
+  });
+});
+function toggleTodo(id) {
+  $.post('/api/todos/toggle', { id }, loadTodos);
+}
+function deleteTodo(id) {
+  $.post('/api/todos/delete', { id }, loadTodos);
+}
+node server.js
